@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 350 89% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 350 89% 60%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 350 89% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 350 89% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-extrabold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-br from-red-900/90 via-red-800/90 to-red-950/90;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1;
+  }
+
+  .section-title {
+    @apply text-3xl font-extrabold tracking-tight mb-6 text-center;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground mb-8 text-center max-w-3xl mx-auto;
+  }
+
+  .stat-bar {
+    @apply h-2 rounded-full bg-muted overflow-hidden relative;
+  }
+
+  .stat-bar-fill {
+    @apply absolute top-0 left-0 h-full bg-gradient-to-r from-primary/80 to-primary;
+  }
+
+  .glow-card {
+    @apply relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-md transition-all duration-300;
+  }
+
+  .glow-card::before {
+    content: "";
+    @apply absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 opacity-0 blur transition-all duration-500;
+  }
+
+  .glow-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .glow-card:hover {
+    @apply shadow-xl shadow-primary/20 -translate-y-1;
+  }
+
+  .discipline-card {
+    @apply relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-md transition-all duration-300;
+  }
+
+  .discipline-card::after {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .discipline-card:hover::after {
+    @apply opacity-100;
+  }
+
+  .discipline-card:hover .discipline-content {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .discipline-content {
+    @apply absolute bottom-0 left-0 right-0 p-4 text-white z-10 transform translate-y-4 opacity-0 transition-all duration-300;
+  }
+
+  .star-rating {
+    @apply flex text-yellow-400 text-lg;
+  }
+
+  .social-card {
+    @apply relative overflow-hidden rounded-xl border shadow-md transition-all duration-300;
+  }
+
+  .social-card::before {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-br opacity-20;
+  }
+
+  .social-card:hover {
+    @apply shadow-xl -translate-y-1;
+  }
+
+  .social-icon {
+    @apply relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm;
+  }
+
+  .skill-slider {
+    @apply relative h-2 rounded-full bg-muted overflow-hidden;
+  }
+
+  .skill-slider-fill {
+    @apply absolute top-0 left-0 h-full bg-gradient-to-r from-primary/80 to-primary;
+  }
+
+  .fighter-level-badge {
+    @apply absolute top-4 right-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white text-xl font-bold shadow-lg;
+  }
+
+  .guide-card {
+    @apply relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-md transition-all duration-300;
+  }
+
+  .guide-card.active {
+    @apply shadow-xl shadow-primary/20;
+  }
+
+  .guide-card.active::before {
+    content: "";
+    @apply absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 opacity-100 blur;
+  }
+
+  /* Table styles */
+  .stats-table {
+    @apply w-full border-collapse;
+  }
+
+  .stats-table th {
+    @apply py-3 px-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider border-b border-muted;
+  }
+
+  .stats-table td {
+    @apply py-3 px-2 border-b border-muted;
+  }
+
+  .stats-table tr:hover {
+    @apply bg-muted/50;
+  }
+
+  .stats-bar {
+    @apply h-2 w-full bg-muted/50 rounded-full overflow-hidden;
+  }
+
+  .stats-bar-fill {
+    @apply h-full rounded-full;
+  }
+
+  .stats-bar-fill-low {
+    @apply bg-gradient-to-r from-red-500/60 to-red-500;
+  }
+
+  .stats-bar-fill-medium {
+    @apply bg-gradient-to-r from-yellow-500/60 to-yellow-500;
+  }
+
+  .stats-bar-fill-high {
+    @apply bg-gradient-to-r from-green-500/60 to-green-500;
+  }
+
+  .stats-bar-fill-very-high {
+    @apply bg-gradient-to-r from-blue-500/60 to-blue-500;
+  }
+
+  .stats-bar-fill-max {
+    @apply bg-gradient-to-r from-purple-500/60 to-purple-500;
+  }
+
+  .stats-value {
+    @apply text-xs font-medium text-right;
+  }
+
+  .coach-card {
+    @apply relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-md transition-all duration-300;
+  }
+
+  .coach-card:hover {
+    @apply shadow-xl shadow-primary/20 -translate-y-1;
+  }
+
+  .coach-card::before {
+    content: "";
+    @apply absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 blur transition-all duration-500;
+  }
+
+  .coach-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .coach-icon {
+    @apply flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary text-2xl;
+  }
+
+  .coach-specialty {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary;
+  }
+}
